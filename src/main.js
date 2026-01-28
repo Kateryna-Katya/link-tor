@@ -175,4 +175,37 @@ contactForm.addEventListener('submit', (e) => {
         lucide.createIcons();
     }, 1500);
 });
+    // Внутри DOMContentLoaded
+
+// 1. Мобильное меню
+const burger = document.querySelector('.burger');
+const navMenu = document.querySelector('.nav__menu');
+const overlay = document.querySelector('.mobile-overlay');
+
+const toggleMenu = () => {
+    burger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+};
+
+burger.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
+navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
+
+// 2. Cookie Popup
+const cookiePopup = document.getElementById('cookie-popup');
+const acceptBtn = document.getElementById('accept-cookies');
+
+// Проверка: давал ли пользователь согласие ранее
+if (!localStorage.getItem('cookieConsent')) {
+    setTimeout(() => {
+        cookiePopup.classList.add('active');
+    }, 2000); // Показываем через 2 секунды после загрузки
+}
+
+acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'true');
+    cookiePopup.classList.remove('active');
+});
 });
