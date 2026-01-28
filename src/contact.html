@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link-Tor | Инновации на пальцах</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%236366f1' stroke-width='8'/><circle cx='50' cy='50' r='15' fill='%2322c55e'/><path d='M50 10 L50 30 M50 70 L50 90 M10 50 L30 50 M70 50 L90 50' stroke='%236366f1' stroke-width='6' stroke-linecap='round'/></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesque:wght@500;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/styles.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+  <body>
+    <load
+      src="./partials/header.html"
+/>
+
+<main>
+  <section class="pages">
+    <div class="container">
+      <h1>Свяжитесь с <span class="text-gradient">нами</span></h1>
+
+      <p class="pages__intro">
+        У вас есть вопросы об инновациях или обучении на платформе <strong>Link-Tor</strong>? Наша команда экспертов в
+        Лондоне готова предоставить вам поддержку в любое время.
+      </p>
+
+      <div class="contact-page__grid">
+        <div class="contact-card">
+          <div class="contact-card__icon">
+            <i data-lucide="phone-call"></i>
+          </div>
+          <h3>Телефон</h3>
+          <p>Экспертная поддержка в Англии</p>
+          <a href="tel:+442014872891" class="contact-card__link">+44 201 487 2891</a>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card__icon">
+            <i data-lucide="mail"></i>
+          </div>
+          <h3>Электронная почта</h3>
+          <p>По всем общим вопросам</p>
+          <a href="mailto:support@link-tor.life" class="contact-card__link">support@link-tor.life</a>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card__icon">
+            <i data-lucide="map-pin"></i>
+          </div>
+          <h3>Офис</h3>
+          <p>Наш адрес в Великобритании</p>
+          <address class="contact-card__address">
+            71-75 Shelton St, London,<br>
+            WC2H 9JQ, UK
+          </address>
+        </div>
+      </div>
+
+      <div class="warning-box" style="margin-top: 60px;">
+        <i data-lucide="clock"></i>
+        <div>
+          <strong>Часы работы:</strong>
+          <p>Мы на связи с понедельника по пятницу, с 09:00 до 18:00 (GMT). Заявки через почту обрабатываются
+            круглосуточно.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+    <load src="./partials/footer.html" />
+    <div id="cookie-popup" class="cookie-popup">
+      <div class="cookie-popup__content">
+        <i data-lucide="cookie" class="cookie-popup__icon"></i>
+        <p class="cookie-popup__text">
+          Этот сайт использует cookies для улучшения работы. Подробнее — в нашей <a href="./cookies.html">Cookie
+            политике</a>.
+        </p>
+        <button id="accept-cookies" class="btn btn--primary btn--sm">Принять</button>
+      </div>
+    </div>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="module" src="./main.js"></script>
+    </body>
+    
+    </html>
