@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link-Tor | Инновации на пальцах</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%236366f1' stroke-width='8'/><circle cx='50' cy='50' r='15' fill='%2322c55e'/><path d='M50 10 L50 30 M50 70 L50 90 M10 50 L30 50 M70 50 L90 50' stroke='%236366f1' stroke-width='6' stroke-linecap='round'/></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesque:wght@500;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/styles.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+  <body>
+    <load
+      src="./partials/header.html"
+/>
+
+<main>
+  <section class="pages">
+    <div class="container">
+      <h1>Политика <span class="text-gradient">возврата средств</span></h1>
+
+      <p class="pages__intro">
+        Мы стремимся обеспечить высокое качество образовательных услуг на платформе <strong>Link-Tor</strong>. Если вы
+        не полностью удовлетворены программой, ознакомьтесь с условиями и процедурой возврата.
+      </p>
+
+      <div class="pages__content">
+        <h2>Условия для оформления возврата</h2>
+        <p>Вы можете претендовать на полный или частичный возврат средств в следующих ситуациях:</p>
+        <ul class="styled-list">
+          <li>
+            <strong>Несоответствие курса описанию:</strong> Если содержание предоставленного материала существенно
+            отличается от программы, заявленной на link-tor.life на момент покупки.
+          </li>
+          <li>
+            <strong>Технические неисправности:</strong> При возникновении критических ошибок на стороне платформы,
+            которые делают обучение невозможным и не были устранены поддержкой в разумные сроки.
+          </li>
+          <li>
+            <strong>Период охлаждения (UK/EU Regulation):</strong> Если вы решили отказаться от обучения в течение 14
+            (четырнадцати) календарных дней с момента оплаты, при условии, что вы еще не получили доступ к значительному
+            объему материалов.
+          </li>
+        </ul>
+
+        <h2>Процедура запроса</h2>
+        <p>Для инициирования возврата выполните следующие действия:</p>
+        <ol class="styled-list">
+          <li>Отправьте письмо на официальный email: <a href="mailto:support@link-tor.life"
+              class="accent-link">support@link-tor.life</a>.</li>
+          <li>В теме письма укажите: <strong>«Запрос на возврат средств: [Ваш ID заказа]»</strong>.</li>
+          <li>В теле письма укажите ваше имя, email регистрации и название курса.</li>
+          <li>Опишите причину запроса, ссылаясь на пункты условий возврата.</li>
+        </ol>
+
+        <div class="warning-box">
+          <i data-lucide="info"></i>
+          <p>Наша служба поддержки рассмотрит ваш запрос в течение 3 рабочих дней и предоставит дальнейшие инструкции.
+          </p>
+        </div>
+
+        <h2>Сроки и способ возврата</h2>
+        <p>
+          После одобрения запроса возврат денежных средств производится в течение <strong>7–14 рабочих дней</strong>.
+          Средства возвращаются тем же способом, которым была совершена оплата (на ту же банковскую карту или счет).
+        </p>
+
+        <h2>Исключения и ограничения</h2>
+        <p>Возврат не осуществляется, если:</p>
+        <ul class="styled-list">
+          <li>Запрос подан по истечении 14 календарных дней с момента транзакции.</li>
+          <li>Пользователь уже изучил или скачал <strong>более 50% материалов</strong> курса.</li>
+          <li>Невозможность обучения вызвана техническими проблемами на стороне пользователя (несовместимое ПО,
+            отсутствие интернета).</li>
+        </ul>
+
+        <div class="pages__contact-card">
+          <h2>Служба поддержки в Англии</h2>
+          <p>
+            По всем вопросам, связанным с возвратом или условиями обучения, обращайтесь к нам:
+            <br>
+            Email: <a href="mailto:support@link-tor.life" class="accent-link">support@link-tor.life</a>
+            <br>
+            Тел: <strong>+44 201 487 2891</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+    <load src="./partials/footer.html" />
+    <div id="cookie-popup" class="cookie-popup">
+      <div class="cookie-popup__content">
+        <i data-lucide="cookie" class="cookie-popup__icon"></i>
+        <p class="cookie-popup__text">
+          Этот сайт использует cookies для улучшения работы. Подробнее — в нашей <a href="./cookies.html">Cookie
+            политике</a>.
+        </p>
+        <button id="accept-cookies" class="btn btn--primary btn--sm">Принять</button>
+      </div>
+    </div>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="module" src="./main.js"></script>
+    </body>
+    
+    </html>
