@@ -128,4 +128,51 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+    // Внутри DOMContentLoaded
+
+// 1. Генерация Капчи
+const captchaQuest = document.getElementById('captcha-question');
+const num1 = Math.floor(Math.random() * 10) + 1;
+const num2 = Math.floor(Math.random() * 10) + 1;
+const correctAnswer = num1 + num2;
+
+if(captchaQuest) {
+    captchaQuest.textContent = `${num1} + ${num2}`;
+}
+
+// 2. Валидация телефона (только цифры)
+const phoneInput = document.getElementById('phone');
+phoneInput.addEventListener('input', (e) => {
+    e.target.value = e.target.value.replace(/\D/g, '');
+});
+
+// 3. Обработка формы
+const contactForm = document.getElementById('ajax-form');
+const successMessage = document.getElementById('form-success');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const userCaptcha = document.getElementById('captcha-answer').value;
+    
+    // Проверка капчи
+    if(parseInt(userCaptcha) !== correctAnswer) {
+        alert('Неправильный ответ на проверочный вопрос!');
+        return;
+    }
+
+    // Имитация отправки
+    const submitBtn = contactForm.querySelector('button');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправка...';
+
+    setTimeout(() => {
+        contactForm.reset();
+        submitBtn.style.display = 'none';
+        successMessage.style.display = 'flex';
+        
+        // Переинициализация иконок в сообщении об успехе
+        lucide.createIcons();
+    }, 1500);
+});
 });

@@ -849,3 +849,216 @@ a {
     font-size: 1.1rem;
     color: var(--color-text-dim);
 }
+/* --- CONTACT SECTION --- */
+.contact {
+    padding: 120px 0;
+    background-color: var(--color-bg-light);
+    clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
+    position: relative;
+    z-index: 6;
+}
+
+.contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.contact__title {
+    font-size: 3rem;
+    margin-bottom: 25px;
+}
+
+.contact__text {
+    color: var(--color-text-dim);
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.contact__item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.contact__icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+}
+
+.contact__item span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+}
+
+.contact__item a,
+.contact__item p {
+    font-weight: 600;
+}
+
+.contact__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--color-secondary);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Form Styling */
+.contact__form {
+    background: var(--color-bg-dark);
+    padding: 50px;
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.contact__form input[type="text"],
+.contact__form input[type="email"],
+.contact__form input[type="tel"],
+.contact__form input[type="number"] {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    outline: none;
+    transition: var(--transition);
+}
+
+.contact__form input:focus {
+    border-color: var(--color-accent);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.error-msg {
+    color: #ef4444;
+    font-size: 0.75rem;
+    display: none;
+    margin-top: 5px;
+}
+
+input.invalid {
+    border-color: #ef4444;
+}
+
+input.invalid+.error-msg {
+    display: block;
+}
+
+.captcha-box {
+    margin: 25px 0;
+    padding: 15px;
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.captcha-box label {
+    font-size: 0.9rem;
+}
+
+.captcha-box input {
+    width: 100px !important;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+}
+
+.checkbox-group a {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+.btn--full {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.1rem;
+}
+
+/* Status Message */
+.form-status {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.form-status.success {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
+}
+
+@media (max-width: 992px) {
+    .contact__grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .contact__form {
+        padding: 30px;
+    }
+}

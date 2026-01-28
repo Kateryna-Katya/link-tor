@@ -246,3 +246,68 @@
         </div>
     </div>
 </section>
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="contact__grid">
+            <div class="contact__info">
+                <h2 class="contact__title">Готовы <span class="text-gradient">начать путь?</span></h2>
+                <p class="contact__text">Заполните форму, и наш эксперт проведет для вас бесплатную консультацию по всем
+                    вопросам внедрения инноваций.</p>
+
+                <div class="contact__details">
+                    <div class="contact__item">
+                        <div class="contact__icon"><i data-lucide="phone-call"></i></div>
+                        <div>
+                            <span>Телефон экспертной поддержки:</span>
+                            <a href="tel:+442014872891">+44 201 487 2891</a>
+                        </div>
+                    </div>
+                    <div class="contact__item">
+                        <div class="contact__icon"><i data-lucide="map-pin"></i></div>
+                        <div>
+                            <span>Офис в Англии:</span>
+                            <p>71-75 Shelton St, London, WC2H 9JQ, UK</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact__status">
+                    <span class="status-dot"></span> Предложение активно только в странах ЕС
+                </div>
+            </div>
+
+            <div class="contact__form-wrapper">
+                <form id="ajax-form" class="contact__form">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" id="phone" placeholder="Телефон (только цифры)" required>
+                        <small class="error-msg">Введите корректный номер (только цифры)</small>
+                    </div>
+
+                    <div class="captcha-box">
+                        <label for="captcha">Сколько будет <span id="captcha-question">...</span>?</label>
+                        <input type="number" id="captcha-answer" placeholder="Ответ" required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="policy" required>
+                        <label for="policy">Я согласен с <a href="./personal-data-policy.html">политикой
+                                данных</a></label>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary btn--full">Запросить доступ</button>
+
+                    <div id="form-success" class="form-status success">
+                        <i data-lucide="check-circle"></i>
+                        Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
