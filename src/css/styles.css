@@ -572,3 +572,148 @@ a {
     color: rgba(99, 102, 241, 0.05);
     transform: translateY(-10px);
 }
+/* --- INNOVATIONS SECTION --- */
+.innovations {
+    background-color: var(--color-bg-light);
+    padding: 120px 0;
+    position: relative;
+    clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 96%);
+    margin-top: -40px;
+}
+
+.innovations__top {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.innovations__title {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.innovations__description {
+    color: var(--color-text-dim);
+}
+
+/* TABS STYLES */
+.tabs {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 32px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.tabs__nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.tabs__btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-dim);
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.tabs__btn i {
+    width: 20px;
+}
+
+.tabs__btn.active {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+}
+
+.tabs__btn:hover:not(.active) {
+    border-color: var(--color-text);
+    color: var(--color-text);
+}
+
+.tabs__pane {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tabs__pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tabs__pane-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.tabs__pane-info h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.tabs__pane-info p {
+    color: var(--color-text-dim);
+    margin-bottom: 30px;
+}
+
+.tabs__pane-list {
+    margin-bottom: 40px;
+}
+
+.tabs__pane-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.tabs__pane-list i {
+    color: var(--color-secondary);
+    width: 20px;
+}
+
+.tabs__pane-visual img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 992px) {
+    .tabs__pane-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs__pane-visual {
+        order: -1;
+    }
+
+    .tabs {
+        padding: 20px;
+    }
+}

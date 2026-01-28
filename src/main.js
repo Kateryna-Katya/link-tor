@@ -94,4 +94,25 @@ benefitCards.forEach(card => {
     card.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
     cardsObserver.observe(card);
 });
+    // Внутри DOMContentLoaded
+
+const tabsButtons = document.querySelectorAll('.tabs__btn');
+const tabsPanes = document.querySelectorAll('.tabs__pane');
+
+tabsButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        // Убираем активные классы
+        tabsButtons.forEach(b => b.classList.remove('active'));
+        tabsPanes.forEach(p => p.classList.remove('active'));
+
+        // Добавляем активные классы
+        btn.classList.add('active');
+        document.getElementById(target).classList.add('active');
+        
+        // Переинициализация иконок для новых элементов
+        lucide.createIcons();
+    });
+});
 });
