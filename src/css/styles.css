@@ -966,7 +966,7 @@ a {
 .contact__form input[type="email"],
 .contact__form input[type="tel"],
 .contact__form input[type="number"] {
-    width: 100%;
+    width: 90%;
     padding: 16px 20px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
