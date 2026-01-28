@@ -1341,3 +1341,48 @@ input.invalid+.error-msg {
         padding: 25px;
     }
 }
+/* --- СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ ДИСКЛЕЙМЕРА --- */
+
+/* Блок предупреждения в начале */
+.warning-box {
+    display: flex;
+    gap: 20px;
+    background: rgba(99, 102, 241, 0.05);
+    border-left: 4px solid var(--color-accent);
+    padding: 30px;
+    border-radius: 0 16px 16px 0;
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.warning-box i {
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.warning-box strong {
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 1.1rem;
+}
+
+/* Блок риска */
+.risk-highlight {
+    background: rgba(239, 68, 68, 0.05);
+    /* Легкий красный оттенок */
+    border: 1px dashed rgba(239, 68, 68, 0.3);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 40px 0;
+}
+
+.risk-highlight h2 {
+    color: #ef4444 !important;
+    /* Красный заголовок для привлечения внимания */
+    margin-top: 0;
+}
+
+.risk-highlight p {
+    margin-bottom: 0;
+}
