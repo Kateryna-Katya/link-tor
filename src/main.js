@@ -115,4 +115,17 @@ tabsButtons.forEach(btn => {
         lucide.createIcons();
     });
 });
+    // Внутри DOMContentLoaded
+
+window.addEventListener('scroll', () => {
+    const cards = document.querySelectorAll('.edu-card__image img');
+    cards.forEach(img => {
+        const speed = 0.05;
+        const rect = img.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const yPos = -(rect.top * speed);
+            img.style.transform = `translateY(${yPos}px) scale(1.1)`;
+        }
+    });
+});
 });
