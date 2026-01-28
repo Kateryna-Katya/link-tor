@@ -1,56 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/link-tor/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link-Tor | Инновации на пальцах</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesque:wght@500;700&display=swap"
+    rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
     <script type="module" crossorigin src="/link-tor/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/link-tor/assets/styles-guStct1H.css">
+    <link rel="stylesheet" crossorigin href="/link-tor/assets/styles-BivUvKxj.css">
   </head>
   <body>
     <header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="{=$icon-path}"></use>
-        </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <nav class="container nav">
+    <a href="/" class="logo">
+      <span class="logo__accent">Link</span>-Tor
+    </a>
+    <ul class="nav__menu">
+      <li><a href="#hero" class="nav__link">Главная</a></li>
+      <li><a href="#platform" class="nav__link">О платформе</a></li>
+      <li><a href="#benefits" class="nav__link">Преимущества</a></li>
+      <li><a href="#innovations" class="nav__link">Инновации</a></li>
+      <li><a href="#education" class="nav__link">Обучение</a></li>
+    </ul>
+    <a href="#contact" class="btn btn--primary nav__btn">Связаться</a>
+    <button class="burger" aria-label="Menu">
+      <span></span>
+    </button>
+  </nav>
 </header>
-
 
     <main>
       <!-- Loads the specified .html file -->
-      
+      <section class="hero" id="hero">
+    <div id="hero-canvas-container"></div>
+    <div class="container hero__content">
+        <div class="hero__badge">Технология нового поколения</div>
+        <h1 class="hero__title">
+            Инновации <br> <span class="text-gradient">на пальцах</span>
+        </h1>
+        <p class="hero__subtitle">
+            Передовая цифровая инфраструктура для обучения и развития. <br>
+            Постройте карьеру, которая работает на вас, используя решения, меняющие правила игры.
+        </p>
+        <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary">Начать сейчас</a>
+            <a href="#platform" class="btn btn--outline">Узнать детали</a>
+        </div>
+        <div class="hero__info">
+            <span>Платформа года • Доступ открыт в Англии</span>
+        </div>
+    </div>
+</section>
     </main>
 
     <footer class="footer">
-  <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT team
+  <div class="footer__divider">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
+    </svg>
+  </div>
+  <div class="container footer__grid">
+    <div class="footer__col">
+      <a href="/" class="logo footer__logo">
+        <span class="logo__accent">Link</span>-Tor
       </a>
-    </p>
+      <p class="footer__text">Технологии нового поколения для вашего роста. Переосмыслите подход к развитию вместе с
+        нами.</p>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__title">Меню</h4>
+      <ul class="footer__links">
+        <li><a href="#hero">Главная</a></li>
+        <li><a href="#platform">О платформе</a></li>
+        <li><a href="#benefits">Преимущества</a></li>
+        <li><a href="#innovations">Инновации</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__title">Документы</h4>
+      <ul class="footer__links">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="return.html">Return Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="personal-data-policy.html">Data Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__title">Контакты</h4>
+      <ul class="footer__contacts">
+        <li>
+          <i data-lucide="phone"></i>
+          <a href="tel:+442014872891">+44 201 487 2891</a>
+        </li>
+        <li>
+          <i data-lucide="mail"></i>
+          <a href="mailto:support@link-tor.life">support@link-tor.life</a>
+        </li>
+        <li>
+          <i data-lucide="map-pin"></i>
+          <span>71-75 Shelton St, London, WC2H 9JQ, UK</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom container">
+    <p>&copy; 2026 Link-Tor.life. Платформа уже доступна в Европе.</p>
   </div>
 </footer>
-
-
+<script>
+  lucide.createIcons();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   </body>
 </html>
