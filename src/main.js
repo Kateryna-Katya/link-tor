@@ -1,51 +1,96 @@
+/**
+ * link-tor.life - Core System v1.0 (2026)
+ * Includes: Three.js, Mobile Nav, Scroll Animations, Tabs, and AJAX-form logic.
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-    // --- THREE.JS BACKGROUND ---
-    const container = document.getElementById('hero-canvas-container');
-    if (container) {
+    
+    // --- 1. ИНИЦИАЛИЗАЦИЯ ИКОНОК (LUCIDE) ---
+    const initIcons = () => {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    };
+    initIcons();
+
+    // --- 2. МОБИЛЬНОЕ МЕНЮ (БЕЗ ОВЕРЛЕЯ) ---
+    const burger = document.querySelector('.burger');
+    const navMenu = document.querySelector('.nav__menu');
+    
+    if (burger && navMenu) {
+        const toggleMenu = () => {
+            burger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            // Блокировка скролла при открытом меню
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        };
+
+        burger.addEventListener('click', toggleMenu);
+
+        // Закрытие при клике на ссылки
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) toggleMenu();
+            });
+        });
+    }
+
+    // --- 3. ЭФФЕКТЫ СКРОЛЛА ДЛЯ HEADER ---
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.style.padding = '12px 0';
+            header.style.background = 'rgba(15, 15, 18, 0.95)';
+        } else {
+            header.style.padding = '20px 0';
+            header.style.background = 'rgba(15, 15, 18, 0.8)';
+        }
+    });
+
+    // --- 4. HERO BACKGROUND (THREE.JS) ---
+    const initHero = () => {
+        const container = document.getElementById('hero-canvas-container');
+        if (!container || typeof THREE === 'undefined') return;
+
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         
         renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(renderer.domElement);
 
+        // Параметры частиц
         const geometry = new THREE.BufferGeometry();
         const vertices = [];
         const particleCount = 2000;
 
         for (let i = 0; i < particleCount; i++) {
-            vertices.push(THREE.MathUtils.randFloatSpread(2000)); // x
-            vertices.push(THREE.MathUtils.randFloatSpread(2000)); // y
-            vertices.push(THREE.MathUtils.randFloatSpread(2000)); // z
+            vertices.push(THREE.MathUtils.randFloatSpread(1500)); 
+            vertices.push(THREE.MathUtils.randFloatSpread(1500)); 
+            vertices.push(THREE.MathUtils.randFloatSpread(1500)); 
         }
 
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-        const material = new THREE.PointsMaterial({ color: 0x6366f1, size: 2 });
+        const material = new THREE.PointsMaterial({ color: 0x6366f1, size: 2, transparent: true, opacity: 0.6 });
         const points = new THREE.Points(geometry, material);
         scene.add(points);
 
         camera.position.z = 500;
 
-        // Mouse Interaction
         let mouseX = 0, mouseY = 0;
         document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
-            mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
+            mouseX = (e.clientX - window.innerWidth / 2) * 0.04;
+            mouseY = (e.clientY - window.innerHeight / 2) * 0.04;
         });
 
         function animate() {
             requestAnimationFrame(animate);
-            points.rotation.x += 0.001;
             points.rotation.y += 0.001;
-            
-            // Плавное следование за мышью
             camera.position.x += (mouseX - camera.position.x) * 0.05;
             camera.position.y += (-mouseY - camera.position.y) * 0.05;
             camera.lookAt(scene.position);
-
             renderer.render(scene, camera);
         }
-
         animate();
 
         window.addEventListener('resize', () => {
@@ -53,159 +98,96 @@ document.addEventListener('DOMContentLoaded', () => {
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
-    }
-    // Внутри DOMContentLoaded
-const observerOptions = {
-    threshold: 0.2
-};
+    };
+    initHero();
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+    // --- 5. ТАБЫ (ИННОВАЦИИ) ---
+    const tabsButtons = document.querySelectorAll('.tabs__btn');
+    const tabsPanes = document.querySelectorAll('.tabs__pane');
+
+    tabsButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-tab');
+            tabsButtons.forEach(b => b.classList.remove('active'));
+            tabsPanes.forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(target).classList.add('active');
+            initIcons(); // Обновляем иконки в новом табе
+        });
     });
-}, observerOptions);
 
-// Наблюдаем за контентом секции About
-const aboutContent = document.querySelector('.about__content');
-if (aboutContent) {
-    observer.observe(aboutContent);
+    // --- 6. ОБРАБОТКА ФОРМЫ (VALIDATION & AJAX IMITATION) ---
+    const contactForm = document.getElementById('ajax-form');
+    const successMsg = document.getElementById('form-success');
+    const captchaText = document.getElementById('captcha-question');
+    const phoneInput = document.getElementById('phone');
+
+    // Генерация капчи
+    const n1 = Math.floor(Math.random() * 10) + 1;
+    const n2 = Math.floor(Math.random() * 5) + 1;
+    const captchaResult = n1 + n2;
+    if (captchaText) captchaText.textContent = `${n1} + ${n2}`;
+
+    // Только цифры в телефоне
+    if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
     }
-    // Внутри DOMContentLoaded после кода Intersection Observer
 
-const benefitCards = document.querySelectorAll('.benefit-card');
-const cardsObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-            // Устанавливаем небольшую задержку для каждой следующей карточки
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Проверка капчи
+            const userVal = parseInt(document.getElementById('captcha-answer').value);
+            if (userVal !== captchaResult) {
+                alert('Ошибка: Решите пример правильно.');
+                return;
+            }
+
+            const btn = contactForm.querySelector('button');
+            btn.disabled = true;
+            btn.textContent = 'Отправка...';
+
+            // Имитация задержки сети
             setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }, index * 100);
-        }
-    });
-}, { threshold: 0.1 });
-
-benefitCards.forEach(card => {
-    // Начальное состояние для анимации
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
-    cardsObserver.observe(card);
-});
-    // Внутри DOMContentLoaded
-
-const tabsButtons = document.querySelectorAll('.tabs__btn');
-const tabsPanes = document.querySelectorAll('.tabs__pane');
-
-tabsButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const target = btn.getAttribute('data-tab');
-
-        // Убираем активные классы
-        tabsButtons.forEach(b => b.classList.remove('active'));
-        tabsPanes.forEach(p => p.classList.remove('active'));
-
-        // Добавляем активные классы
-        btn.classList.add('active');
-        document.getElementById(target).classList.add('active');
-        
-        // Переинициализация иконок для новых элементов
-        lucide.createIcons();
-    });
-});
-    // Внутри DOMContentLoaded
-
-window.addEventListener('scroll', () => {
-    const cards = document.querySelectorAll('.edu-card__image img');
-    cards.forEach(img => {
-        const speed = 0.05;
-        const rect = img.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            const yPos = -(rect.top * speed);
-            img.style.transform = `translateY(${yPos}px) scale(1.1)`;
-        }
-    });
-});
-    // Внутри DOMContentLoaded
-
-// 1. Генерация Капчи
-const captchaQuest = document.getElementById('captcha-question');
-const num1 = Math.floor(Math.random() * 10) + 1;
-const num2 = Math.floor(Math.random() * 10) + 1;
-const correctAnswer = num1 + num2;
-
-if(captchaQuest) {
-    captchaQuest.textContent = `${num1} + ${num2}`;
-}
-
-// 2. Валидация телефона (только цифры)
-const phoneInput = document.getElementById('phone');
-phoneInput.addEventListener('input', (e) => {
-    e.target.value = e.target.value.replace(/\D/g, '');
-});
-
-// 3. Обработка формы
-const contactForm = document.getElementById('ajax-form');
-const successMessage = document.getElementById('form-success');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const userCaptcha = document.getElementById('captcha-answer').value;
-    
-    // Проверка капчи
-    if(parseInt(userCaptcha) !== correctAnswer) {
-        alert('Неправильный ответ на проверочный вопрос!');
-        return;
+                contactForm.style.display = 'none'; // Скрываем саму форму
+                successMsg.style.display = 'flex';  // Показываем блок успеха
+                initIcons(); // Прогружаем иконку в блоке успеха
+            }, 1500);
+        });
     }
 
-    // Имитация отправки
-    const submitBtn = contactForm.querySelector('button');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Отправка...';
+    // --- 7. COOKIE POPUP ---
+    const cookiePop = document.getElementById('cookie-popup');
+    const cookieBtn = document.getElementById('accept-cookies');
 
-    setTimeout(() => {
-        contactForm.reset();
-        submitBtn.style.display = 'none';
-        successMessage.style.display = 'flex';
-        
-        // Переинициализация иконок в сообщении об успехе
-        lucide.createIcons();
-    }, 1500);
-});
-    // Внутри DOMContentLoaded
+    if (cookiePop && !localStorage.getItem('cookieConsent')) {
+        setTimeout(() => cookiePop.classList.add('active'), 2500);
+    }
 
-// 1. Мобильное меню
-const burger = document.querySelector('.burger');
-const navMenu = document.querySelector('.nav__menu');
-const overlay = document.querySelector('.mobile-overlay');
+    if (cookieBtn) {
+        cookieBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'true');
+            cookiePop.classList.remove('active');
+        });
+    }
 
-const toggleMenu = () => {
-    burger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-};
+    // --- 8. АНИМАЦИЯ ПОЯВЛЕНИЯ (SCROLL REVEAL) ---
+    const revealItems = document.querySelectorAll('.about__content, .benefit-card, .edu-card');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Если это преимущество, запускаем CSS-анимацию
+                if (entry.target.classList.contains('benefit-card')) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            }
+        });
+    }, { threshold: 0.1 });
 
-burger.addEventListener('click', toggleMenu);
-overlay.addEventListener('click', toggleMenu);
-navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
-
-// 2. Cookie Popup
-const cookiePopup = document.getElementById('cookie-popup');
-const acceptBtn = document.getElementById('accept-cookies');
-
-// Проверка: давал ли пользователь согласие ранее
-if (!localStorage.getItem('cookieConsent')) {
-    setTimeout(() => {
-        cookiePopup.classList.add('active');
-    }, 2000); // Показываем через 2 секунды после загрузки
-}
-
-acceptBtn.addEventListener('click', () => {
-    localStorage.setItem('cookieConsent', 'true');
-    cookiePopup.classList.remove('active');
-});
+    revealItems.forEach(item => obs.observe(item));
 });
