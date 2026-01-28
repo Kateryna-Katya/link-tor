@@ -71,5 +71,27 @@ const observer = new IntersectionObserver((entries) => {
 const aboutContent = document.querySelector('.about__content');
 if (aboutContent) {
     observer.observe(aboutContent);
-}
+    }
+    // Внутри DOMContentLoaded после кода Intersection Observer
+
+const benefitCards = document.querySelectorAll('.benefit-card');
+const cardsObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            // Устанавливаем небольшую задержку для каждой следующей карточки
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+        }
+    });
+}, { threshold: 0.1 });
+
+benefitCards.forEach(card => {
+    // Начальное состояние для анимации
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+    cardsObserver.observe(card);
+});
 });
